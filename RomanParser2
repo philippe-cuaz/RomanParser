@@ -1,0 +1,246 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class RomanParser {
+    final public String one = "I";
+    final public String five = "V";
+    final public String ten = "X";
+    final public String fifty = "L";
+    final public String onehundred = "C";
+    final public String fivehundred = "D";
+    final public String onethousand = "M";
+
+    public int Operation1(int len, int sum, int a, int b, int c) {
+        System.out.println("Operation1 input sum: "+sum+" a: "+a+" b:"+b);
+        int res=0;
+        if ( c > b ){   ;}
+        if( a >= b ){  res = a+b; System.out.println("summing possible"); System.out.println("Adding output sum: "+res);}
+        if(  b > a ){  res = b-a; System.out.println("summing not possible");System.out.println("Subtracting output res: "+res);}
+        return res;
+    }
+
+    public int Operation2(int len, int sum, int a, int b, int c) {
+        System.out.println("Operation2 input sum: "+sum+" a: "+a+" b:"+b);
+        int res=0;
+        if( a >= b ){  res = a+b; System.out.println("summing possible"); System.out.println("Adding output sum: "+res);}
+        if(  b > a ){  res = b-a; System.out.println("summing not possible");System.out.println("Subtracting output res: "+res);}
+        return res;
+    }
+
+    public int Operation3(int len, int sum, int a, int b, int c) {
+        System.out.println("Operation3 input sum: "+sum+" a: "+a+" b:"+b);
+        int res=0;
+        if( a >= b ){  res = a+b; System.out.println("summing possible"); System.out.println("Adding output sum: "+res);}
+        if(  b > a ){  res = b-a; System.out.println("summing not possible");System.out.println("Subtracting output res: "+res);}
+        return res;
+    }
+
+    public int Operation4(int len, int sum, int a, int b, int c) {
+        System.out.println("Operation4 input sum: "+sum+" a: "+a+" b:"+b);
+        int res=0;
+        if( a >= b ){  res = a+b; System.out.println("summing possible"); System.out.println("Adding output sum: "+res);}
+        if(  b > a ){  res = b-a; System.out.println("summing not possible");System.out.println("Subtracting output res: "+res);}
+        return res;
+    }
+
+    public int Operation5(int len, int sum, int a, int b, int c) {
+        System.out.println("Operation5 input sum: "+sum+" a: "+a+" b:"+b);
+        int res=0;
+        if( a >= b ){  res = a+b; System.out.println("summing possible"); System.out.println("Adding output sum: "+res);}
+        if(  b > a ){  res = b-a; System.out.println("summing not possible");System.out.println("Subtracting output res: "+res);}
+        return res;
+    }
+
+    public int Operation6(int len, int sum, int a, int b, int c) {
+        System.out.println("Operation6 input sum: "+sum+" a: "+a+" b:"+b);
+        int res=0;
+        if( a >= b ){  res = a+b; System.out.println("summing possible"); System.out.println("Adding output sum: "+res);}
+        if(  b > a ){  res = b-a; System.out.println("summing not possible");System.out.println("Subtracting output res: "+res);}
+        return res;
+    }
+
+    public int Operation7(int len, int sum, int a, int b, int c) {
+        System.out.println("Operation7 input sum: "+sum+" a: "+a+" b:"+b);
+        int res=0;
+        if( a >= b ){  res = a+b; System.out.println("summing possible"); System.out.println("Adding output sum: "+res);}
+        if(  b > a ){  res = b-a; System.out.println("summing not possible");System.out.println("Subtracting output res: "+res);}
+        return res;
+    }
+
+
+    public int DecimalValue(String str){
+        int res = 0;
+        if(str!=null) {
+            switch (str) {
+                case one:
+                    res = 1;
+                    break;
+                case five:
+                    res = 5;
+                    break;
+                case ten:
+                    res = 10;
+                    break;
+                case fifty:
+                    res = 50;
+                    break;
+                case onehundred:
+                    res = 100;
+                    break;
+                case fivehundred:
+                    res = 500;
+                    break;
+                case onethousand:
+                    res = 1000;
+                    break;
+                case " ":
+                    res = 0;
+                    break;
+                default:
+                    res = 0;
+            }
+        }
+        return res;
+    }
+    public String InputData() throws IOException {
+        System.out.println("Enter Roman Numeral:");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String name = reader.readLine();
+        return name;
+    }
+    public boolean  ValidateInputData(String str){
+        // I, V, X, L, C, D, and M,
+        boolean res = false;
+        int len = str.length();
+        for(int i = 0; i < len; i++){
+            String str2= String.valueOf(str.charAt(i));
+            switch(str2){
+                case one:
+                    res = true;
+                    break;
+                case five:
+                    res = true;
+                    break;
+                case  ten:
+                    res = true;
+                    break;
+                case fifty:
+                    res = true;
+                    break;
+                case onehundred:
+                    res = true;
+                    break;
+                case fivehundred:
+                    res = true;
+                    break;
+                case onethousand:
+                    res = true;
+                    break;
+                case " ":
+                    res = true;
+                    break;
+                default:
+                    res = false;
+            }
+        }
+        return res;
+    }
+    public int ParseData(String str) {
+        // I, V, X, L, C, D, and M,
+        int len = str.length();
+        char[] str2 = str.toCharArray();
+        String[] str3 = new String[len+1];
+        int[] intar = new int[len+1];
+        for (int i = 0; i < len; i++) {
+            str3[i] = String.valueOf(str2[i]);
+            intar[i] = DecimalValue(str3[i]);
+        }
+        int osum = 0;
+        int nsum=0;
+        if (len==1){
+            osum=intar[0];
+        }
+        else {
+            for (int n = 0; n < len-1; n++) {
+                switch (str3[n]) {
+                    case one:
+                        int b1 = intar[n + 1];
+                        int a1 = intar[n];
+                        int c1= intar[n+2];
+                        nsum = Operation1(len,osum,a1,b1,c1);
+                        intar[n+1] = nsum;
+                        System.out.println("case one: nsum= "+nsum+" a= "+a1+" b= "+b1+" osum= "+osum);
+                        break;
+                    case five:
+                        int b2 = intar[n + 1];
+                        int a2 = intar[n];
+                        int c2= intar[n+2];
+                        nsum = Operation2(len,osum,a2,b2,c2);
+                        intar[n+1] = nsum;
+                        System.out.println("case five: nsum= "+nsum+" a= "+a2+" b= "+b2+" osum= "+osum);
+                        break;
+                    case ten:
+                        int b3 = intar[n + 1];
+                        int a3 = intar[n];
+                        int c3= intar[n+2];
+                        nsum = Operation3(len,osum,a3,b3,c3);
+                        intar[n+1] = nsum;
+                        System.out.println("case ten: nsum= "+nsum+" a= "+a3+" b= "+b3+" osum= "+osum);
+                        break;
+                    case fifty:
+                        int b4 = intar[n + 1];
+                        int a4 = intar[n];
+                        int c4= intar[n+2];
+                        nsum = Operation4(len,osum,a4,b4,c4);
+                        intar[n+1] = nsum;
+                        System.out.println("case fifty: nsum= "+nsum+" a= "+a4+" b= "+b4+" osum= "+osum);
+                        break;
+                    case onehundred:
+                        int b5 = intar[n + 1];
+                        int a5 = intar[n];
+                        int c5= intar[n+2];
+                        nsum = Operation5(len,osum,a5,b5,c5);
+                        intar[n+1] = nsum;
+                        System.out.println("case onehundred: nsum= "+nsum+" a= "+a5+" b= "+b5+" osum= "+osum);
+                        break;
+                    case fivehundred:
+                        int b6 = intar[n + 1];
+                        int a6 = intar[n];
+                        int c6= intar[n+2];
+                        nsum = Operation6(len,osum,a6,b6,c6);
+                        intar[n+1] = nsum;
+                        System.out.println("case fivehundred: nsum= "+nsum+" a= "+a6+" b= "+b6+" osum= "+osum);
+                        break;
+                    case onethousand:
+                        int b7 = intar[n + 1];
+                        int a7 = intar[n];
+                        int c7= intar[n+2];
+                        nsum = Operation7(len,osum,a7,b7,c7);
+                        intar[n+1] = nsum;
+                        System.out.println("case onethousand: nsum= "+nsum+" a= "+a7+" b= "+b7+" osum= "+osum);
+                        break;
+                    case " ":
+                        nsum += 0;
+                        break;
+                    default:
+                        nsum += 0;
+                        break;
+                }
+                osum=nsum;
+            }
+        }
+        return osum;
+    }
+
+    public static void main(String[] args) throws IOException {
+        RomanParser rp = new RomanParser();
+        String str = rp.InputData();
+        if (rp.ValidateInputData(str)){
+            int response = rp.ParseData(str);
+            System.out.println("Response: "+response);
+        }else{
+            System.out.println("Input Error");
+        }
+    }
+}
